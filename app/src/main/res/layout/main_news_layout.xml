@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/full_main_image_news"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            app:srcCompat="@drawable/footballteam" />
+
+        <TextView
+            android:id="@+id/full_label_news_info"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/full_main_image_news"
+            android:layout_marginTop="2dp"
+
+            android:hint="Name news"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/full_date_news"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="421dp"
+            android:layout_toEndOf="@+id/full_label_news_info"
+            android:background="@drawable/rounded_button"
+            android:text="2012.12.12" />
+
+        <TextView
+            android:id="@+id/full_news_info"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/full_label_news_info"
+            android:textSize="17sp"
+            android:padding="5dp"
+            android:background="@drawable/layout_bg"
+            android:text="Full news text Full news text Full news text Full news text v v vvFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news textFull news text" />
+</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

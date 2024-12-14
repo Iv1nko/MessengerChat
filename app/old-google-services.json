@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "503090993776",
+    "firebase_url": "https://webaviadatabase-default-rtdb.firebaseio.com",
+    "project_id": "webaviadatabase",
+    "storage_bucket": "webaviadatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503090993776:android:caaf7e93f2181b5380f2b5",
+        "android_client_info": {
+          "package_name": "com.example.NewsApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503090993776-g2a5jc20oop3obdugm0eg3iv3usq9om8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.NewsApp",
+            "certificate_hash": "0ec6a68ef28797ce470f83782b8111053541304e"
+          }
+        },
+        {
+          "client_id": "503090993776-5s91hea4vbnjli5sic6sple8omvc0vgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtyRx_VMTajJqqHPDI-6HSUQYskOGOvy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503090993776-5s91hea4vbnjli5sic6sple8omvc0vgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

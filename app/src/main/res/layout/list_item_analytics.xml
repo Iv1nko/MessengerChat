@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_effect"
+    android:backgroundTint="@color/message_color">
+
+    <TextView
+        android:id="@+id/user_name_analytics"
+        android:layout_width="200dp"
+        android:layout_toEndOf="@id/image_user_analytics"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
+        android:text="@string/username"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="normal|bold" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_user_analytics"
+        android:layout_marginStart="7dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/ic_profile_image"
+        app:civ_border_width="2dp"
+        />
+    <TextView
+        android:id="@+id/count_of_messages"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:text="Count"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:background="@drawable/squre_icon"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:paddingTop="3dp"
+        />
+
+
+</RelativeLayout>

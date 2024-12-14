@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/audioCall_chat"
+        android:icon="@android:drawable/stat_sys_phone_call"
+        android:title="New Message"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/videoCall_chat"
+        android:icon="@android:drawable/presence_video_online"
+        android:title="New Message"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/info_chat"
+        android:icon="@drawable/ic_baseline_info"
+        android:title="New Message"
+        app:showAsAction="ifRoom" />
+</menu>
