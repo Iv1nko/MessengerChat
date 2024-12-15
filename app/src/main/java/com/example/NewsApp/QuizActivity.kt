@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_quiz.rb3
 import kotlinx.android.synthetic.main.activity_quiz.rb4
 import kotlinx.android.synthetic.main.activity_quiz.textPoints
 import kotlinx.android.synthetic.main.activity_quiz.textQuestion
-import kotlin.math.log
+import java.util.Calendar
 
 
 class QuizActivity : AppCompatActivity() {
@@ -32,7 +32,8 @@ class QuizActivity : AppCompatActivity() {
         supportActionBar!!.title = "Quiz"
         val sharedPref: SharedPreferences = getSharedPreferences("Points", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
-        var Points = sharedPref.getInt("Points", 0)
+        var points = sharedPref.getInt("Points", 0)
+        var timer = sharedPref.getLong("timer", 0)
         var counter = 1
 
 
@@ -45,98 +46,147 @@ class QuizActivity : AppCompatActivity() {
 
 
         buttonCheck.setOnClickListener {
-            when(counter){
+            when (counter) {
                 1 -> {
-                    if (rb2.isChecked) {
-                        buttonNextQuestion.visibility = VISIBLE
-                        buttonCheck.visibility = INVISIBLE
-                        if (Points + 5 > 25) {
-                            Toast.makeText(this, "Вы достигли максимальной скидки", Toast.LENGTH_SHORT).show()
-                        } else {
-                            textPoints.visibility = VISIBLE
-                            Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
-                            Points += 5
-                            editor.putInt("Points", Points).commit()
-                            Log.d("aaaa", Points.toString())
-                        }
+                    if (Calendar.getInstance().timeInMillis - timer > 86400000) {
+                        if (rb2.isChecked) {
+                            buttonNextQuestion.visibility = VISIBLE
+                            buttonCheck.visibility = INVISIBLE
+                            if (points + 5 > 25) {
+                                Toast.makeText(
+                                    this,
+                                    "Вы достигли максимальной скидки",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                textPoints.visibility = VISIBLE
+                                Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
+                                points += 5
+                                editor.putInt("Points", points).commit()
+                                Log.d("aaaa", points.toString())
+                            }
 
-                    } else { Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show() }
+                        } else {
+                            timer = Calendar.getInstance().timeInMillis
+                            editor.putLong("timer", timer)
+                            Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show()
+                        }
+                    } else Toast.makeText(
+                        this,
+                        "Следующая попытка будет доступна через 24 часа",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+
                 2 -> {
-                    if (rb3.isChecked) {
-                        buttonNextQuestion.visibility = VISIBLE
-                        buttonCheck.visibility = INVISIBLE
-                        if (Points + 5 > 25) {
-                            Toast.makeText(this, "Вы достигли максимальной скидки", Toast.LENGTH_SHORT).show()
-                        } else {
-                            textPoints.visibility = VISIBLE
-                            Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
-                            Points += 5
-                            editor.putInt("Points", Points).commit()
-                            Log.d("aaaa", Points.toString())
-                        }
+                    if (Calendar.getInstance().timeInMillis - timer > 86400000) {
+                        if (rb3.isChecked) {
+                            buttonNextQuestion.visibility = VISIBLE
+                            buttonCheck.visibility = INVISIBLE
+                            if (points + 5 > 25) {
+                                Toast.makeText(
+                                    this,
+                                    "Вы достигли максимальной скидки",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                textPoints.visibility = VISIBLE
+                                Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
+                                points += 5
+                                editor.putInt("Points", points).commit()
+                                Log.d("aaaa", points.toString())
+                            }
 
-                    } else { Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show() }
+                        } else {
+                            timer = Calendar.getInstance().timeInMillis
+                            editor.putLong("timer", timer)
+                            Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show()
+                        }
+                    } else Toast.makeText(
+                        this,
+                        "Следующая попытка будет доступна через 24 часа",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+
                 3 -> {
-                    if (rb1.isChecked) {
-                        buttonNextQuestion.visibility = VISIBLE
-                        buttonCheck.visibility = INVISIBLE
-                        if (Points + 5 > 25) {
-                            Toast.makeText(this, "Вы достигли максимальной скидки", Toast.LENGTH_SHORT).show()
+                    if (Calendar.getInstance().timeInMillis - timer > 86400000) {
+                        if (rb1.isChecked) {
+                            buttonNextQuestion.visibility = VISIBLE
+                            buttonCheck.visibility = INVISIBLE
+                            if (points + 5 > 25) {
+                                Toast.makeText(
+                                    this,
+                                    "Вы достигли максимальной скидки",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                textPoints.visibility = VISIBLE
+                                Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
+                                points += 5
+                                timer = Calendar.getInstance().timeInMillis
+                                editor.putLong("timer", timer)
+                                editor.putInt("Points", points).commit()
+                                Log.d("aaaa", points.toString())
+                            }
+
                         } else {
-                            textPoints.visibility = VISIBLE
-                            Toast.makeText(this, "Верно", Toast.LENGTH_SHORT).show()
-                            Points += 5
-                            editor.putInt("Points", Points).commit()
-                            Log.d("aaaa", Points.toString())
+                            timer = Calendar.getInstance().timeInMillis
+                            editor.putLong("timer", timer)
+                            Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show()
                         }
-
-                    } else { Toast.makeText(this, "Неверный ответ", Toast.LENGTH_SHORT).show() }
+                    } else Toast.makeText(
+                        this,
+                        "Следующая попытка будет доступна через 24 часа",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
 
 
 
-        buttonNextQuestion.setOnClickListener {
-            if (counter == 3) {
-                counter = 1
-            } else counter++
-            buttonNextQuestion.visibility = INVISIBLE
-            buttonCheck.visibility = VISIBLE
-            textPoints.visibility = INVISIBLE
-            when(counter) {
-                1 -> {
-                    imageQuestion.setImageResource(R.drawable.quiz1)
-                    textQuestion.text = getString(R.string.question1)
-                    rb1.text = "Adidas"
-                    rb2.text = "Reebok"
+            buttonNextQuestion.setOnClickListener {
+                if (counter == 3) {
+                    counter = 1
+                } else counter++
+                buttonNextQuestion.visibility = INVISIBLE
+                buttonCheck.visibility = VISIBLE
+                textPoints.visibility = INVISIBLE
+                when (counter) {
+                    1 -> {
+                        imageQuestion.setImageResource(R.drawable.quiz1)
+                        textQuestion.text = getString(R.string.question1)
+                        rb1.text = "Adidas"
+                        rb2.text = "Reebok"
 //               *
-                    rb3.text = "Uhlsport"
-                    rb4.text = "Umbro"
-                } 2 -> {
-                imageQuestion.setImageResource(R.drawable.quiz2)
-                textQuestion.text = getString(R.string.question2)
-                rb1.text = "В 1998 году"
-                rb2.text = "В 2000 году"
-                rb3.text = "В 2001 году"
+                        rb3.text = "Uhlsport"
+                        rb4.text = "Umbro"
+                    }
+
+                    2 -> {
+                        imageQuestion.setImageResource(R.drawable.quiz2)
+                        textQuestion.text = getString(R.string.question2)
+                        rb1.text = "В 1998 году"
+                        rb2.text = "В 2000 году"
+                        rb3.text = "В 2001 году"
 //               *
-                rb4.text = "В 2003 году"
-            } 3 -> {
-                imageQuestion.setImageResource(R.drawable.quiz3)
-                textQuestion.text = getString(R.string.question3)
-                rb1.text = "Гёкдениз Карадениз"
-                //               *
-                rb2.text = "Александр Рязанцев"
-                rb3.text = "Кристиан Нобоа"
-                rb4.text = "Александро Домингес"
+                        rb4.text = "В 2003 году"
+                    }
+
+                    3 -> {
+                        imageQuestion.setImageResource(R.drawable.quiz3)
+                        textQuestion.text = getString(R.string.question3)
+                        rb1.text = "Гёкдениз Карадениз"
+                        //               *
+                        rb2.text = "Александр Рязанцев"
+                        rb3.text = "Кристиан Нобоа"
+                        rb4.text = "Александро Домингес"
+                    }
                 }
             }
+
         }
-
-    }
-
 
 
 //    private fun fetchUsers(searchText: String) {
@@ -173,42 +223,45 @@ class QuizActivity : AppCompatActivity() {
 //            })
 //        }
 //    }
-}
+    }
 
-class UserItem(val user: User_list): Item<GroupieViewHolder>(){
-    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        //имя пользователя
-        viewHolder.itemView.findViewById<TextView>(R.id.user_name_newmessage).text = user.name
-        val image = viewHolder.itemView.findViewById<ImageView>(R.id.image_user_newmessage)
-        //Картинка пользователя
-        Picasso.get()
+    class UserItem(val user: User_list) : Item<GroupieViewHolder>() {
+        override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+            //имя пользователя
+            viewHolder.itemView.findViewById<TextView>(R.id.user_name_newmessage).text = user.name
+            val image = viewHolder.itemView.findViewById<ImageView>(R.id.image_user_newmessage)
+            //Картинка пользователя
+            Picasso.get()
                 .load(user.image_id)
                 .fit()
                 .centerCrop()
                 .into(image)
+        }
+
+        override fun getLayout(): Int {
+            return R.layout.list_item_user
+        }
     }
 
-    override fun getLayout(): Int {
-        return R.layout.list_item_user
-    }
-}
-class NewsItem(val user: ChatLogActivity.News): Item<GroupieViewHolder>() {
-    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        //имя пользователя
-        viewHolder.itemView.findViewById<TextView>(R.id.listenForLatestNews).text = user.displayname
-        viewHolder.itemView.findViewById<TextView>(R.id.discriptionNews).text = user.description
-        viewHolder.itemView.findViewById<ImageView>(R.id.image_news).setImageResource(user.image_id)
+    class NewsItem(val user: ChatLogActivity.News) : Item<GroupieViewHolder>() {
+        override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+            //имя пользователя
+            viewHolder.itemView.findViewById<TextView>(R.id.listenForLatestNews).text =
+                user.displayname
+            viewHolder.itemView.findViewById<TextView>(R.id.discriptionNews).text = user.description
+            viewHolder.itemView.findViewById<ImageView>(R.id.image_news)
+                .setImageResource(user.image_id)
 
 
 //        viewHolder.itemView.findViewById<TextView>(R.id.datenewsDescription).text = user.newsdate
 //        val image = viewHolder.itemView.findViewById<ImageView>(R.id.image_news)
-        //Картинка пользователя
+            //Картинка пользователя
 //        Picasso.get()
 //            .load(user.image_id)
 //            .fit()
 //            .centerCrop()
 //            .into(image)
-    }
+        }
 
         override fun getLayout(): Int {
             return R.layout.list_item_news
@@ -219,7 +272,8 @@ class NewsItem(val user: ChatLogActivity.News): Item<GroupieViewHolder>() {
         override fun bind(viewHolder: GroupieViewHolder, position: Int) {
             //имя пользователя
             viewHolder.itemView.findViewById<TextView>(R.id.nameCub).text = user.name
-            viewHolder.itemView.findViewById<CircleImageView>(R.id.image_cub).setImageResource(user.image_cub)
+            viewHolder.itemView.findViewById<CircleImageView>(R.id.image_cub)
+                .setImageResource(user.image_cub)
             //Картинка пользователя
 //        Picasso.get()
 //            .load(user.image_cub)

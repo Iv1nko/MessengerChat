@@ -104,7 +104,7 @@ class BasketActivity : AppCompatActivity() {
         try {
             startActivity(Intent.createChooser(i, "Send Email"))
         } catch (e: Exception) {
-            Toast.makeText(this, "e.message", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
     }
 }

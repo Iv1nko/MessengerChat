@@ -1,9 +1,12 @@
 package com.example.NewsApp.com.example.messengerchat
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.NewsApp.*
@@ -15,6 +18,7 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.synthetic.main.activity_analytics.buttonFeedback
 
 class AnalyticsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +27,18 @@ class AnalyticsActivity : AppCompatActivity() {
 
         supportActionBar?.title = "About club"
 
-
-
-
+        buttonFeedback.setOnClickListener{
+            val i = Intent(Intent.ACTION_SENDTO )
+            i.data = Uri.parse("mailto:")
+            i.putExtra(Intent.EXTRA_EMAIL, arrayOf("khusnetdinov2021@bk.ru"))
+            i.putExtra(Intent.EXTRA_SUBJECT, "Обратная связь")
+//            i.putExtra(Intent.EXTRA_TEXT, text)
+            try {
+                startActivity(Intent.createChooser(i, "Send Email"))
+            } catch (e: Exception) {
+                Toast.makeText(this, "e.message", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 //        val adapter = GroupAdapter<GroupieViewHolder>()
 //        val adapterCounts = GroupAdapter<GroupieViewHolder>()
